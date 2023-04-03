@@ -11,21 +11,27 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Address {
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String streetNumber;
-    private String street;
+    private LocalDate orderDate;
+    private LocalDate realizationDate;
+    private LocalDate deliveryDate;
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
-    private City city;
+    private Address address;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private Customer customer;
     @JsonIgnore
-    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Order> orders = new ArrayList<>();
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<OrderLine> orderLines = new ArrayList<>();
+
 }
