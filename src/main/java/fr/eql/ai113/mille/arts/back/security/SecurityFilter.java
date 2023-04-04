@@ -1,6 +1,6 @@
 package fr.eql.ai113.mille.arts.back.security;
 
-import fr.eql.ai113.petpal.spring.back.service.UserService;
+import fr.eql.ai113.mille.arts.back.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
