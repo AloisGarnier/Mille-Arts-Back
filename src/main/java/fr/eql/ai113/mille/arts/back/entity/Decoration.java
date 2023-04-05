@@ -20,6 +20,7 @@ public class Decoration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String picture;
     private Long preparationDelay;
     private LocalDate additionDate;
     private LocalDate withdrawalDate;

@@ -41,7 +41,11 @@ public class SecurityRestController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@RequestBody AuthRequest requestDto) throws AccountExistsException {
-        UserDetails owner = userService.save(requestDto.getUsername(), requestDto.getPassword());
+        UserDetails owner = userService.save(
+                requestDto.getFirstName(),
+                requestDto.getLastName(),
+                requestDto.getUsername(),
+                requestDto.getPassword());
         String token  = userService.generateJwtForUser(owner);
         return ResponseEntity.ok(new AuthResponse(owner, token));
     }

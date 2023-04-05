@@ -49,11 +49,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDetails save(String login, String password) throws AccountExistsException {
+    public UserDetails save(String firstName, String lastName, String login, String password) throws AccountExistsException {
         if (customerDao.findByLogin(login) != null) {
             throw new AccountExistsException();
         }
         Customer customer = new Customer();
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
         customer.setLogin(login);
         customer.setPassword(passwordEncoder().encode(password));
         customerDao.save(customer);

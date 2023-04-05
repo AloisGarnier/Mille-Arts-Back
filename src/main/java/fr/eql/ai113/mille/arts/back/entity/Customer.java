@@ -89,6 +89,12 @@ public class Customer implements UserDetails {
     }
 
     /// Setters ///
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
     public void setLogin(String login) {
         this.login = login;
     }
