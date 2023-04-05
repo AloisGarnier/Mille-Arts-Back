@@ -22,4 +22,14 @@ public class Tag {
     @JsonIgnore
     @OneToMany(mappedBy = "tag", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<DecorationTag> decorationTags = new ArrayList<>();
+
+    // Getters //
+    public String getName() {
+        return name;
+    }
+
+    // Setters //
+    public void setName(String name) {
+        this.name = name;
+    }
 }

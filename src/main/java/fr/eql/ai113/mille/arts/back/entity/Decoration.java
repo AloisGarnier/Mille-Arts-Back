@@ -33,4 +33,59 @@ public class Decoration {
     @JsonIgnore
     @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<DecorationTag> decorationTags = new ArrayList<>();
+
+    /// Accesseurs ///
+    public Long getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getPicture() {
+        return picture;
+    }
+    public Long getPreparationDelay() {
+        return preparationDelay;
+    }
+    public LocalDate getAdditionDate() {
+        return additionDate;
+    }
+    public LocalDate getWithdrawalDate() {
+        return withdrawalDate;
+    }
+    public List<DecorationPrice> getDecorationPrices() {
+        return decorationPrices;
+    }
+    public List<DecorationStock> getDecorationStocks() {
+        return decorationStocks;
+    }
+
+    /// Mutateurs ///
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+    public void setPreparationDelay(Long preparationDelay) {
+        this.preparationDelay = preparationDelay;
+    }
+    public void setAdditionDate(LocalDate additionDate) {
+        this.additionDate = additionDate;
+    }
+    public void setWithdrawalDate(LocalDate withdrawalDate) {
+        this.withdrawalDate = withdrawalDate;
+    }
+    public void setDecorationPrices(List<DecorationPrice> decorationPrices) {
+        this.decorationPrices = decorationPrices;
+    }
+    public void setDecorationStocks(List<DecorationStock> decorationStocks) {
+        this.decorationStocks = decorationStocks;
+    }
+    public void setDecorationTags(List<DecorationTag> decorationTags) {
+        this.decorationTags = decorationTags;
+    }
 }

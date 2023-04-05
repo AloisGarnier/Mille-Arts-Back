@@ -22,4 +22,14 @@ public class Price {
     @JsonIgnore
     @OneToMany(mappedBy = "price", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<DecorationPrice> decorationPrices = new ArrayList<>();
+
+    // Getters //
+    public Float getAmount() {
+        return amount;
+    }
+
+    // Setters //
+    public void setAmount(Float amount) {
+        this.amount = amount;
+    }
 }

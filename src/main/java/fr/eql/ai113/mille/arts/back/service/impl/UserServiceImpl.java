@@ -66,7 +66,8 @@ public class UserServiceImpl implements UserService {
     public String generateJwtForUser(UserDetails user) {
         Date now = new Date();
         Date expirationDate = new Date(now.getTime() + 3600 * 1000);
-        return Jwts.builder().setSubject(user.getUsername()).setIssuedAt(now).setExpiration(expirationDate)
+        return Jwts.builder().setSubject(user.getUsername()).setIssuedAt(now)
+                .setExpiration(expirationDate)
                 .signWith(SignatureAlgorithm.HS512, signingKey).compact();
     }
 
