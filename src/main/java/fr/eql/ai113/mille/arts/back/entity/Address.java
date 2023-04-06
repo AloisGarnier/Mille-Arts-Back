@@ -24,8 +24,21 @@ public class Address {
     private String street;
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
+    private Customer customer;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
     private City city;
     @JsonIgnore
     @OneToMany(mappedBy = "address", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Order> orders = new ArrayList<>();
+    private List<Command> commands = new ArrayList<>();
+
+    public Address() {
+
+    }
+
+    public Address(String streetNumber, String street, City city) {
+        this.streetNumber = streetNumber;
+        this.street = street;
+        this.city = city;
+    }
 }

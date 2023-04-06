@@ -26,6 +26,7 @@ public class Customer implements UserDetails {
     private String lastName;
     private String firstName;
     private LocalDate birthDate;
+    private String phoneNumber;
     private String login;
     @JsonIgnore
     private String password;
@@ -33,7 +34,10 @@ public class Customer implements UserDetails {
     private LocalDate withdrawalDate;
     @JsonIgnore
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Order> orders = new ArrayList<>();
+    private List<Command> commands = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Address> addresses = new ArrayList<>();
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles;
 
@@ -66,6 +70,10 @@ public class Customer implements UserDetails {
         this.password = password;
     }
 
+    public void addAddress(Address newAddress) {
+        addresses.add(newAddress);
+    }
+
     @Override
     public String getUsername() {
         return login;
@@ -87,6 +95,15 @@ public class Customer implements UserDetails {
     public String getPassword() {
         return password;
     }
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
     /// Setters ///
     public void setLastName(String lastName) {
@@ -100,5 +117,14 @@ public class Customer implements UserDetails {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

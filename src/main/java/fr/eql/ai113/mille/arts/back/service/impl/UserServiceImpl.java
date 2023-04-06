@@ -1,5 +1,7 @@
 package fr.eql.ai113.mille.arts.back.service.impl;
 
+import fr.eql.ai113.mille.arts.back.entity.Address;
+import fr.eql.ai113.mille.arts.back.entity.City;
 import fr.eql.ai113.mille.arts.back.entity.Customer;
 import fr.eql.ai113.mille.arts.back.repository.CustomerDao;
 import fr.eql.ai113.mille.arts.back.service.UserService;
@@ -20,7 +22,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Configuration
@@ -49,15 +53,43 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDetails save(String firstName, String lastName, String login, String password) throws AccountExistsException {
+    public UserDetails save(String firstName,
+                            String lastName,
+                            String phoneNumber,
+                            LocalDate birthDate,
+                            Address address,
+                            String login,
+                            String password) throws AccountExistsException {
         if (customerDao.findByLogin(login) != null) {
             throw new AccountExistsException();
         }
         Customer customer = new Customer();
         customer.setFirstName(firstName);
         customer.setLastName(lastName);
+        customer.setPhoneNumber(phoneNumber);
+        customer.setBirthDate(birthDate);
+        customer.addAddress(address);
         customer.setLogin(login);
         customer.setPassword(passwordEncoder().encode(password));
+        customerDao.save(customer);
+        return customer;
+    }
+
+    @Override
+    public UserDetails findCustomerById(Long customerId) {
+        return customerDao.findById(customerId).get();
+    }
+
+    @Override
+    public List<Address> findAddressesByCustomerId(Long customerId) {
+        return customerDao.findAllAddressesByCustomerId(customerId);
+    }
+
+
+
+    @Override
+    public UserDetails addAddress(Customer customer, String streetNumber, String street, City city) {
+        customer.addAddress(new Address(streetNumber, street, city));
         customerDao.save(customer);
         return customer;
     }

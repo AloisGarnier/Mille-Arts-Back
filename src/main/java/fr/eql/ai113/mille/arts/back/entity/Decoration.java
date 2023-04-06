@@ -11,7 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Decoration {
@@ -24,15 +26,13 @@ public class Decoration {
     private Long preparationDelay;
     private LocalDate additionDate;
     private LocalDate withdrawalDate;
-    @JsonIgnore
-    @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<DecorationPrice> decorationPrices = new ArrayList<>();
     @JsonIgnore
     @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<DecorationStock> decorationStocks = new ArrayList<>();
-    @JsonIgnore
-    @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<DecorationTag> decorationTags = new ArrayList<>();
+    @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<DecorationTag> decorationTags = new HashSet<>();
 
     /// Accesseurs ///
     public Long getId() {
@@ -58,6 +58,9 @@ public class Decoration {
     }
     public List<DecorationStock> getDecorationStocks() {
         return decorationStocks;
+    }
+    public Set<DecorationTag> getDecorationTags() {
+        return decorationTags;
     }
 
     /// Mutateurs ///
@@ -85,7 +88,7 @@ public class Decoration {
     public void setDecorationStocks(List<DecorationStock> decorationStocks) {
         this.decorationStocks = decorationStocks;
     }
-    public void setDecorationTags(List<DecorationTag> decorationTags) {
+    public void setDecorationTags(Set<DecorationTag> decorationTags) {
         this.decorationTags = decorationTags;
     }
 }

@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class OrderLine {
+public class CommandLine {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,5 +16,5 @@ public class OrderLine {
     private Long quantity;
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
-    private Order order;
+    private Command command;
 }
