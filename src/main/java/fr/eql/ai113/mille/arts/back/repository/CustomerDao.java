@@ -1,6 +1,7 @@
 package fr.eql.ai113.mille.arts.back.repository;
 
 import fr.eql.ai113.mille.arts.back.entity.Address;
+import fr.eql.ai113.mille.arts.back.entity.Command;
 import fr.eql.ai113.mille.arts.back.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,4 +19,10 @@ public interface CustomerDao extends JpaRepository<Customer, Long> {
             "FROM Address a " +
             "WHERE a.customer = ?1")
     List<Address> findAllAddressesByCustomerId(Customer customer);
+
+    @Query("SELECT c " +
+            "FROM Command c " +
+            "WHERE c.customer = ?1")
+    List<Command> findAllCommandsByCustomerId(Customer customer);
+
 }

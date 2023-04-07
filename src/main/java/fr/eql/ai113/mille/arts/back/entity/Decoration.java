@@ -29,6 +29,9 @@ public class Decoration {
     @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<DecorationPrice> decorationPrices = new ArrayList<>();
     @JsonIgnore
+    @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<CommandLine> commandLines = new HashSet<>();
+    @JsonIgnore
     @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<DecorationStock> decorationStocks = new ArrayList<>();
     @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

@@ -37,7 +37,7 @@ public class Customer implements UserDetails {
     @JsonIgnore
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Command> commands = new ArrayList<>();
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Address> addresses = new HashSet<>();
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles;

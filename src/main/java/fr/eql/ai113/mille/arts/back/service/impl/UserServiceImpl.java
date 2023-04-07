@@ -2,6 +2,7 @@ package fr.eql.ai113.mille.arts.back.service.impl;
 
 import fr.eql.ai113.mille.arts.back.entity.Address;
 import fr.eql.ai113.mille.arts.back.entity.City;
+import fr.eql.ai113.mille.arts.back.entity.Command;
 import fr.eql.ai113.mille.arts.back.entity.Customer;
 import fr.eql.ai113.mille.arts.back.repository.CustomerDao;
 import fr.eql.ai113.mille.arts.back.service.UserService;
@@ -83,6 +84,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Address> findAddressesByCustomerId(Long customerId) {
         return customerDao.findAllAddressesByCustomerId(customerDao.findById(customerId).get());
+    }
+
+    @Override
+    public List<Command> findCommandsByCustomerId(Long customerId) {
+        return customerDao.findAllCommandsByCustomerId(customerDao.findById(customerId).get());
     }
 
     @Override

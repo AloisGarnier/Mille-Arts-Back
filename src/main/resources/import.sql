@@ -28,3 +28,12 @@ INSERT INTO `decoration_price` (`id`, `decoration_id`, `price_id`, `addition_dat
 INSERT INTO `decoration_price` (`id`, `decoration_id`, `price_id`, `addition_date`, `withdrawal_date`) VALUES (2, 2, 1, '2017-11-16', '2017-11-16');
 INSERT INTO `decoration_price` (`id`, `decoration_id`, `price_id`, `addition_date`, `withdrawal_date`) VALUES (3, 1, 2, '2017-11-16', null);
 INSERT INTO `decoration_price` (`id`, `decoration_id`, `price_id`, `addition_date`, `withdrawal_date`) VALUES (4, 2, 3, '2017-11-16', null);
+
+INSERT INTO `command` (`id`, `customer_id`) VALUES (1, 1);
+INSERT INTO `command` (`id`, `customer_id`) VALUES (2, 1);
+INSERT INTO `command` (`id`, `customer_id`) VALUES (3, 1);
+
+INSERT INTO `command_line` (`id`, `command_id`, `decoration_id`) VALUES (1, 1, 1);
+INSERT INTO `command_line` (`id`, `command_id`, `decoration_id`) VALUES (2, 1, 2);
+INSERT INTO `command_line` (`id`, `command_id`, `decoration_id`) VALUES (3, 2, 1);
+INSERT INTO `command_line` (`id`, `command_id`, `decoration_id`) VALUES (4, 3, 2);

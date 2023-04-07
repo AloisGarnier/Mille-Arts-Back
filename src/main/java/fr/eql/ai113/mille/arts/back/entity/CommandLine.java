@@ -16,5 +16,25 @@ public class CommandLine {
     private Long quantity;
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
+    private Decoration decoration;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
     private Command command;
+
+    /// Getters ///
+    public Long getQuantity() {
+        return quantity;
+    }
+    public Decoration getDecoration() {
+        return decoration;
+    }
+
+    /// Setters ///
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
+    }
+    public void setDecoration(Decoration decoration) {
+        this.decoration = decoration;
+    }
+
 }

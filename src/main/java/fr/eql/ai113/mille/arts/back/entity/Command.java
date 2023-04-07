@@ -13,7 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Command {
@@ -30,8 +32,22 @@ public class Command {
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Customer customer;
-    @JsonIgnore
-    @OneToMany(mappedBy = "command", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<CommandLine> commandLines = new ArrayList<>();
+    @OneToMany(mappedBy = "command", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<CommandLine> commandLines = new HashSet<>();
 
+    /// Getters ///
+    public Customer getCustomer() {
+        return customer;
+    }
+    public Set<CommandLine> getCommandLines() {
+        return commandLines;
+    }
+
+    /// Setters ///
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+    public void setCommandLines(Set<CommandLine> commandLines) {
+        this.commandLines = commandLines;
+    }
 }

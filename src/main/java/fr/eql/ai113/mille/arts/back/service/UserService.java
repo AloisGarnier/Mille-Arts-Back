@@ -2,6 +2,7 @@ package fr.eql.ai113.mille.arts.back.service;
 
 import fr.eql.ai113.mille.arts.back.entity.Address;
 import fr.eql.ai113.mille.arts.back.entity.City;
+import fr.eql.ai113.mille.arts.back.entity.Command;
 import fr.eql.ai113.mille.arts.back.entity.Customer;
 import fr.eql.ai113.mille.arts.back.service.impl.AccountExistsException;
 import org.springframework.security.core.Authentication;
@@ -24,6 +25,7 @@ public interface UserService extends UserDetailsService {
                      String password) throws AccountExistsException;
     UserDetails findCustomerById(Long customerId);
     List<Address> findAddressesByCustomerId(Long customerId);
+    List<Command> findCommandsByCustomerId(Long customerId);
     UserDetails addAddress(Customer customer, String streetNumber, String street, City city);
     String generateJwtForUser(UserDetails user);
     UserDetails getUserFromJwt(String jwt);
