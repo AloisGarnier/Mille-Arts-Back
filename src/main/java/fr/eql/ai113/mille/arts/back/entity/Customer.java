@@ -15,7 +15,9 @@ import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Customer implements UserDetails {
@@ -35,9 +37,8 @@ public class Customer implements UserDetails {
     @JsonIgnore
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Command> commands = new ArrayList<>();
-    @JsonIgnore
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Address> addresses = new ArrayList<>();
+    private Set<Address> addresses = new HashSet<>();
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles;
 
@@ -95,7 +96,7 @@ public class Customer implements UserDetails {
     public String getPassword() {
         return password;
     }
-    public List<Address> getAddresses() {
+    public Set<Address> getAddresses() {
         return addresses;
     }
     public LocalDate getBirthDate() {
@@ -118,7 +119,7 @@ public class Customer implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
-    public void setAddresses(List<Address> addresses) {
+    public void setAddresses(Set<Address> addresses) {
         this.addresses = addresses;
     }
     public void setBirthDate(LocalDate birthDate) {

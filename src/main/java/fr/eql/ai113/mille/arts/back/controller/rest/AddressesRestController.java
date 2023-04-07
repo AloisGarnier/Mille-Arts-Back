@@ -24,7 +24,7 @@ public class AddressesRestController {
 
     UserService userService;
 
-    @GetMapping("/{id}/addresses")
+    @GetMapping("/{id}/all")
     public List<Address> findAllAddressesByCustomerId(@PathVariable long id) { return userService.findAddressesByCustomerId(id);}
 
     @PostMapping("/{id}/newaddress")

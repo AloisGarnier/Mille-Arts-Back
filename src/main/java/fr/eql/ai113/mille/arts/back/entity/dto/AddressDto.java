@@ -1,6 +1,7 @@
 package fr.eql.ai113.mille.arts.back.entity.dto;
 
 import fr.eql.ai113.mille.arts.back.entity.City;
+import fr.eql.ai113.mille.arts.back.entity.Customer;
 
 public class AddressDto {
 

@@ -82,10 +82,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Address> findAddressesByCustomerId(Long customerId) {
-        return customerDao.findAllAddressesByCustomerId(customerId);
+        return customerDao.findAllAddressesByCustomerId(customerDao.findById(customerId).get());
     }
-
-
 
     @Override
     public UserDetails addAddress(Customer customer, String streetNumber, String street, City city) {

@@ -17,5 +17,5 @@ public interface CustomerDao extends JpaRepository<Customer, Long> {
     @Query("SELECT a " +
             "FROM Address a " +
             "WHERE a.customer = ?1")
-    List<Address> findAllAddressesByCustomerId(Long id);
+    List<Address> findAllAddressesByCustomerId(Customer customer);
 }

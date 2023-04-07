@@ -22,6 +22,7 @@ public class Address {
     private Long id;
     private String streetNumber;
     private String street;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Customer customer;
@@ -39,6 +40,28 @@ public class Address {
     public Address(String streetNumber, String street, City city) {
         this.streetNumber = streetNumber;
         this.street = street;
+        this.city = city;
+    }
+
+    /// Getters ///
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+    public String getStreet() {
+        return street;
+    }
+    public City getCity() {
+        return city;
+    }
+
+    /// Setters ///
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
+    }
+    public void setStreet(String street) {
+        this.street = street;
+    }
+    public void setCity(City city) {
         this.city = city;
     }
 }

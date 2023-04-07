@@ -48,6 +48,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                 // Points publics
                 .antMatchers("/security/**").permitAll()
                 .antMatchers("/catalog/**").permitAll()
+                .antMatchers("/addresses/**").permitAll()
                 // Points privés
                 .anyRequest().authenticated();
 
