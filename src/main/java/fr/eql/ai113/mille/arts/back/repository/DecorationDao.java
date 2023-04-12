@@ -10,6 +10,14 @@ public interface DecorationDao extends JpaRepository<Decoration, Long> {
 
     List<Decoration> findAll();
 
+    @Query("SELECT DISTINCT d " +
+            "FROM Decoration d " +
+            "JOIN DecorationTag dt ON d.id = dt.decoration " +
+            "JOIN Tag t ON t.id = dt.tag " +
+            "WHERE d.name LIKE %?1% " +
+            "OR t.name LIKE %?1%")
+    List<Decoration> findDecorationsByResearch(String research);
+
     @Query("SELECT t.name " +
             "FROM Decoration d " +
             "JOIN DecorationTag dt ON d.id = dt.decoration " +

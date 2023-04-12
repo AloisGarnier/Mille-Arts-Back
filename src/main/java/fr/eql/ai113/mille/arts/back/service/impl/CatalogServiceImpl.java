@@ -20,6 +20,11 @@ public class CatalogServiceImpl implements CatalogService {
     }
 
     @Override
+    public List<Decoration> findDecorationsByResearch(String research) {
+        return decorationDao.findDecorationsByResearch(research);
+    }
+
+    @Override
     public List<String> findAllTagsByIdDecoration(Long decorationId) {
         return decorationDao.findAllTagsByDecorationId(decorationId);
     }
