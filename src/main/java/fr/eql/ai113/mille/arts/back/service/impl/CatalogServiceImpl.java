@@ -25,6 +25,9 @@ public class CatalogServiceImpl implements CatalogService {
     }
 
     @Override
+    public Decoration findDecorationById(Long decorationId) {return decorationDao.findById(decorationId).get();}
+
+    @Override
     public List<String> findAllTagsByIdDecoration(Long decorationId) {
         return decorationDao.findAllTagsByDecorationId(decorationId);
     }

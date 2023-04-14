@@ -24,6 +24,9 @@ public class CatalogRestController {
     @GetMapping("/{research}")
     public List<Decoration> findDecorationsByResearch(@PathVariable String research) {return catalogService.findDecorationsByResearch(research); }
 
+    @GetMapping("/{id}/all")
+    public Decoration findDecorationById(@PathVariable long id) { return catalogService.findDecorationById(id);}
+
     @GetMapping("/{id}/tags")
     public List<String> findAllTagsByDecorationId(@PathVariable long id) { return catalogService.findAllTagsByIdDecoration(id); }
 
