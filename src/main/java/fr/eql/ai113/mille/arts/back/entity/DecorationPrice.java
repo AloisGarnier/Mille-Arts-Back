@@ -33,6 +33,9 @@ public class DecorationPrice {
     public LocalDate getWithdrawalDate() {
         return withdrawalDate;
     }
+    public LocalDate getAdditionDate() {
+        return additionDate;
+    }
 
     // Setters //
     public void setPrice(Price price) {
@@ -40,5 +43,8 @@ public class DecorationPrice {
     }
     public void setWithdrawalDate(LocalDate withdrawalDate) {
         this.withdrawalDate = withdrawalDate;
+    }
+    public void setAdditionDate(LocalDate additionDate) {
+        this.additionDate = additionDate;
     }
 }

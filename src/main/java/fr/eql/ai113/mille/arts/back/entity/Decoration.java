@@ -23,6 +23,7 @@ public class Decoration {
     private Long id;
     private String name;
     private String picture;
+    private String description;
     private Long preparationDelay;
     private LocalDate additionDate;
     private LocalDate withdrawalDate;
@@ -36,6 +37,16 @@ public class Decoration {
     private List<DecorationStock> decorationStocks = new ArrayList<>();
     @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<DecorationTag> decorationTags = new HashSet<>();
+
+    public Float getPriceAtDate(LocalDate date) {
+        for (DecorationPrice price : decorationPrices) {
+            if ((price.getWithdrawalDate() == null && date.isAfter(price.getAdditionDate()))
+                    || (date.isBefore(price.getWithdrawalDate()) && date.isAfter(price.getAdditionDate()))) {
+                return price.getPrice().getAmount();
+            }
+        }
+        return null;
+    }
 
     /// Accesseurs ///
     public Long getId() {

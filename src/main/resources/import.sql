@@ -8,8 +8,8 @@ INSERT INTO `address` (`id`, `street`, `street_number`, `customer_id`, `city_id`
 INSERT INTO `address` (`id`, `street`, `street_number`, `customer_id`, `city_id`) VALUES (2, 'rue des Bleuets', '3bis', 2, 1);
 INSERT INTO `address` (`id`, `street`, `street_number`, `customer_id`, `city_id`) VALUES (3, 'rue des Lilas', '127', 2, 2);
 
-INSERT INTO `decoration` (`id`, `name`, `picture`) VALUES (1, 'Chauve-souris', 'https://i.pinimg.com/564x/3e/1e/07/3e1e07ef7dfe787049fff063d7b12684.jpg');
-INSERT INTO `decoration` (`id`, `name`, `picture`) VALUES (2, 'Chauve-souris 2', 'https://i.pinimg.com/564x/3e/1e/07/3e1e07ef7dfe787049fff063d7b12684.jpg');
+INSERT INTO `decoration` (`id`, `name`, `picture`, `description`) VALUES (1, 'Chauve-souris', 'https://i.pinimg.com/564x/3e/1e/07/3e1e07ef7dfe787049fff063d7b12684.jpg', 'Description 1');
+INSERT INTO `decoration` (`id`, `name`, `picture`, `description`) VALUES (2, 'Chauve-souris 2', 'https://i.pinimg.com/564x/3e/1e/07/3e1e07ef7dfe787049fff063d7b12684.jpg', 'Description 2');
 
 INSERT INTO `tag` (`id`, `name`) VALUES (1, 'Halloween');
 INSERT INTO `tag` (`id`, `name`) VALUES (2, 'Violet');

@@ -20,6 +20,7 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     private String streetNumber;
     private String street;
     @JsonIgnore
@@ -44,6 +45,10 @@ public class Address {
     }
 
     /// Getters ///
+
+    public String getName() {
+        return name;
+    }
     public String getStreetNumber() {
         return streetNumber;
     }
@@ -55,6 +60,9 @@ public class Address {
     }
 
     /// Setters ///
+    public void setName(String name) {
+        this.name = name;
+    }
     public void setStreetNumber(String streetNumber) {
         this.streetNumber = streetNumber;
     }

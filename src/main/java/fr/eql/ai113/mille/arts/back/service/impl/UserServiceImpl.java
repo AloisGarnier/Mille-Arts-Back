@@ -86,9 +86,16 @@ public class UserServiceImpl implements UserService {
         return customerDao.findAllAddressesByCustomerId(customerDao.findById(customerId).get());
     }
 
+    /**
+     * Finds all past commands of a given customer
+     * @param customerId the id of the customer
+     * @return the list of past commands if the id is found in the database, else the method returns null
+     */
     @Override
     public List<Command> findCommandsByCustomerId(Long customerId) {
-        return customerDao.findAllCommandsByCustomerId(customerDao.findById(customerId).get());
+        return customerDao.findById(customerId).isPresent() ?
+                customerDao.findAllCommandsByCustomerId(customerDao.findById(customerId).get()) :
+                null;
     }
 
     @Override
