@@ -13,7 +13,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,6 +52,19 @@ public class SecurityRestController {
                 requestDto.getAddress(),
                 requestDto.getUsername(),
                 requestDto.getPassword());
+        String token = userService.generateJwtForUser(owner);
+        return ResponseEntity.ok(new AuthResponse(owner, token));
+    }
+
+    @PutMapping("/change/{id}")
+    public ResponseEntity<AuthResponse> changeCustomer(@PathVariable long id, @RequestBody AuthRequest requestDto) {
+        UserDetails owner = userService.change(
+                id,
+                requestDto.getFirstName(),
+                requestDto.getLastName(),
+                requestDto.getPhoneNumber(),
+                requestDto.getUsername()
+        );
         String token = userService.generateJwtForUser(owner);
         return ResponseEntity.ok(new AuthResponse(owner, token));
     }

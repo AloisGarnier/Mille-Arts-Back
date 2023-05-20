@@ -28,12 +28,14 @@ public class AddressesRestController {
     public List<Address> findAllAddressesByCustomerId(@PathVariable long id) { return userService.findAddressesByCustomerId(id);}
 
     @PostMapping("/{id}/newaddress")
-    public UserDetails addNewAddress(@PathVariable long id, @RequestBody AddressDto addressDto) { return userService.addAddress(
+    public UserDetails addNewAddress(@PathVariable long id, @RequestBody AddressDto addressDto) {
+        return userService.addAddress(
             (Customer) userService.findCustomerById(id),
             addressDto.getStreetNumber(),
             addressDto.getStreet(),
             addressDto.getCity()
-    );}
+        );
+    }
 
     @Autowired
     public void setUserService(UserService userService) {

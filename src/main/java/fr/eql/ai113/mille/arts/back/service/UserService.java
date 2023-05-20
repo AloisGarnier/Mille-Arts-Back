@@ -23,6 +23,7 @@ public interface UserService extends UserDetailsService {
                      Address address,
                      String login,
                      String password) throws AccountExistsException;
+    UserDetails change(long id, String firstName, String lastName, String phoneNumber, String username);
     UserDetails findCustomerById(Long customerId);
     List<Address> findAddressesByCustomerId(Long customerId);
     List<Command> findCommandsByCustomerId(Long customerId);

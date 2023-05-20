@@ -31,9 +31,8 @@ import java.util.List;
 @Configuration
 public class UserServiceImpl implements UserService {
 
-    /** Injecté par le setter */
+    /** Injectés par les setters */
     private CustomerDao customerDao;
-    /** Injecté par le setter */
     private AuthenticationManager authenticationManager;
 
     private final String signingKey;
@@ -74,6 +73,13 @@ public class UserServiceImpl implements UserService {
         customer.setPassword(passwordEncoder().encode(password));
         customerDao.save(customer);
         return customer;
+    }
+
+    @Override
+    public UserDetails change(long id, String firstName, String lastName, String phoneNumber, String username) {
+        customerDao.changeCustomer(id, firstName, lastName, phoneNumber, username);
+
+        return findCustomerById(id);
     }
 
     @Override

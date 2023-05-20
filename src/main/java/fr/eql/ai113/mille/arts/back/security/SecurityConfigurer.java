@@ -43,7 +43,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(new SecurityEntryPoint())
                 .and();
 
-        // Permissions sur les point d'API
+        // Permissions sur les points d'API
         http.authorizeRequests()
                 // Points publics
                 .antMatchers("/security/**").permitAll()
