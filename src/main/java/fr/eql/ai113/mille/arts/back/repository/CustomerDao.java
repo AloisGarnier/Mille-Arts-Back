@@ -1,6 +1,7 @@
 package fr.eql.ai113.mille.arts.back.repository;
 
 import fr.eql.ai113.mille.arts.back.entity.Address;
+import fr.eql.ai113.mille.arts.back.entity.City;
 import fr.eql.ai113.mille.arts.back.entity.Command;
 import fr.eql.ai113.mille.arts.back.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -37,4 +38,18 @@ public interface CustomerDao extends JpaRepository<Customer, Long> {
             "WHERE c.id = ?1")
     void changeCustomer(long id, String firstName, String lastName, String phoneNumber, String username);
 
+    @Transactional
+    @Modifying
+    @Query("UPDATE Address a " +
+            "SET a.name = ?2, " +
+            "a.streetNumber = ?3, " +
+            "a.street = ?4, " +
+            "a.city = ?5 " +
+            "WHERE a.id = ?1")
+    void modifyAddress(Long addressId, String name, String streetNumber, String street, City city);
+
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM Address a WHERE a.id = ?1")
+    void deleteAddress(Long addressId);
 }

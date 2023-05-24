@@ -1,6 +1,5 @@
 package fr.eql.ai113.mille.arts.back.controller.rest;
 
-import fr.eql.ai113.mille.arts.back.entity.Address;
 import fr.eql.ai113.mille.arts.back.entity.dto.AuthRequest;
 import fr.eql.ai113.mille.arts.back.entity.dto.AuthResponse;
 import fr.eql.ai113.mille.arts.back.service.UserService;
