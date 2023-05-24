@@ -27,7 +27,7 @@ public interface UserService extends UserDetailsService {
     UserDetails findCustomerById(Long customerId);
     List<Address> findAddressesByCustomerId(Long customerId);
     List<Command> findCommandsByCustomerId(Long customerId);
-    UserDetails addAddress(Customer customer, String streetNumber, String street, String cityName, String zipCode);
+    Address addAddress(Customer customer, String name, String streetNumber, String street, String cityName, String zipCode);
     Address modifyAddress(Long addressId, String name, String streetNumber, String street, String cityName, String zipCode);
     Address deleteAddress(Long addressId);
     String generateJwtForUser(UserDetails user);

@@ -31,9 +31,10 @@ public class AddressesRestController {
     public List<Address> findAllAddressesByCustomerId(@PathVariable long id) { return userService.findAddressesByCustomerId(id);}
 
     @PostMapping("/{id}/newaddress")
-    public UserDetails addNewAddress(@PathVariable long id, @RequestBody AddressDto addressDto) {
+    public Address addNewAddress(@PathVariable long id, @RequestBody AddressDto addressDto) {
         return userService.addAddress(
             (Customer) userService.findCustomerById(id),
+            addressDto.getName(),
             addressDto.getStreetNumber(),
             addressDto.getStreet(),
             addressDto.getCityName(),

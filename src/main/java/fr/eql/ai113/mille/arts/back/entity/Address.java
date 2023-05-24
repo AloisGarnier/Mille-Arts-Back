@@ -61,6 +61,9 @@ public class Address {
     public City getCity() {
         return city;
     }
+    public Customer getCustomer() {
+        return customer;
+    }
 
     /// Setters ///
     public void setId(Long id) {
@@ -77,5 +80,8 @@ public class Address {
     }
     public void setCity(City city) {
         this.city = city;
+    }
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

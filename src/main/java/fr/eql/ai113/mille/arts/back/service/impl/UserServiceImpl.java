@@ -4,6 +4,7 @@ import fr.eql.ai113.mille.arts.back.entity.Address;
 import fr.eql.ai113.mille.arts.back.entity.City;
 import fr.eql.ai113.mille.arts.back.entity.Command;
 import fr.eql.ai113.mille.arts.back.entity.Customer;
+import fr.eql.ai113.mille.arts.back.repository.AddressDao;
 import fr.eql.ai113.mille.arts.back.repository.CityDao;
 import fr.eql.ai113.mille.arts.back.repository.CustomerDao;
 import fr.eql.ai113.mille.arts.back.service.UserService;
@@ -35,6 +36,7 @@ public class UserServiceImpl implements UserService {
     /** Injectés par les setters */
     private CustomerDao customerDao;
     private CityDao cityDao;
+    private AddressDao addressDao;
     private AuthenticationManager authenticationManager;
 
     private final String signingKey;
@@ -107,11 +109,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDetails addAddress(Customer customer, String streetNumber, String street, String cityName, String zipCode) {
+    public Address addAddress(Customer customer, String name, String streetNumber, String street, String cityName, String zipCode) {
+
         City city = checkCityAlreadyExists(cityName, zipCode);
-        customer.addAddress(new Address(streetNumber, street, city));
-        customerDao.save(customer);
-        return customer;
+
+        Address address = new Address();
+        address.setName(name);
+        address.setStreetNumber(streetNumber);
+        address.setStreet(street);
+        address.setCity(city);
+        address.setCustomer(customer);
+        customer.addAddress(address);
+
+        addressDao.save(address);
+
+        return address;
     }
 
     @Override
@@ -128,15 +140,15 @@ public class UserServiceImpl implements UserService {
     }
 
     private City checkCityAlreadyExists(String cityName, String zipCode) {
-        City city = cityDao.findByNameAndZipCode(cityName, zipCode).get(0);
-        if (city == null) {
-            city = new City();
+        List<City> cities = cityDao.findByNameAndZipCode(cityName, zipCode);
+        if (cities.size() == 0) {
+            City city = new City();
             city.setName(cityName);
             city.setZipCode(zipCode);
             cityDao.save(city);
-            city = cityDao.findByNameAndZipCode(cityName, zipCode).get(0);
+            return cityDao.findByNameAndZipCode(cityName, zipCode).get(0);
         }
-        return city;
+        return cities.get(0);
     }
 
     @Override
@@ -181,5 +193,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public void setCityDao(CityDao cityDao) {
         this.cityDao = cityDao;
+    }
+    @Autowired
+    public void setAddressDao(AddressDao addressDao) {
+        this.addressDao = addressDao;
     }
 }
