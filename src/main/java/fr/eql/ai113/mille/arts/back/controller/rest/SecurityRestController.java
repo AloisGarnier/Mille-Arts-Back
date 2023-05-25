@@ -68,6 +68,13 @@ public class SecurityRestController {
         return ResponseEntity.ok(new AuthResponse(owner, token));
     }
 
+    @PutMapping("/unsubscribe/{id}")
+    public ResponseEntity<AuthResponse> unsubscribe(@PathVariable long id) {
+        UserDetails owner = userService.unsubscribe(id);
+        String token = userService.generateJwtForUser(owner);
+        return ResponseEntity.ok(new AuthResponse(owner, token));
+    }
+
     /// Setters ///
     @Autowired
     public void setUserService(UserService userService) {

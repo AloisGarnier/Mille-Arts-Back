@@ -92,6 +92,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDetails unsubscribe(long id) {
+        customerDao.unsubscribe(id, LocalDate.now());
+
+        return findCustomerById(id);
+    }
+
+    @Override
     public List<Address> findAddressesByCustomerId(Long customerId) {
         return customerDao.findAllAddressesByCustomerId(customerDao.findById(customerId).get());
     }

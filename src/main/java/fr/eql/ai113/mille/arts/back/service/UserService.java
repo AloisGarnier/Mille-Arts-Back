@@ -25,6 +25,7 @@ public interface UserService extends UserDetailsService {
                      String password) throws AccountExistsException;
     UserDetails change(long id, String firstName, String lastName, String phoneNumber, String username);
     UserDetails findCustomerById(Long customerId);
+    UserDetails unsubscribe(long id);
     List<Address> findAddressesByCustomerId(Long customerId);
     List<Command> findCommandsByCustomerId(Long customerId);
     Address addAddress(Customer customer, String name, String streetNumber, String street, String cityName, String zipCode);

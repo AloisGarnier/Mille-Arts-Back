@@ -105,6 +105,13 @@ public class Customer implements UserDetails {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+    public LocalDate getAdditionDate() {
+        return additionDate;
+    }
+    public LocalDate getWithdrawalDate() {
+        return withdrawalDate;
+    }
+
 
     /// Setters ///
     public void setLastName(String lastName) {
@@ -128,4 +135,11 @@ public class Customer implements UserDetails {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+    public void setAdditionDate(LocalDate additionDate) {
+        this.additionDate = additionDate;
+    }
+    public void setWithdrawalDate(LocalDate withdrawalDate) {
+        this.withdrawalDate = withdrawalDate;
+    }
+
 }

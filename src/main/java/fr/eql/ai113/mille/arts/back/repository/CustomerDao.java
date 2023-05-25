@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface CustomerDao extends JpaRepository<Customer, Long> {
@@ -38,6 +39,13 @@ public interface CustomerDao extends JpaRepository<Customer, Long> {
             "c.login = ?5 " +
             "WHERE c.id = ?1")
     void changeCustomer(long id, String firstName, String lastName, String phoneNumber, String username);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Customer c " +
+            "SET c.withdrawalDate = ?2 " +
+            "WHERE c.id = ?1")
+    void unsubscribe(long id, LocalDate now);
 
     @Transactional
     @Modifying
