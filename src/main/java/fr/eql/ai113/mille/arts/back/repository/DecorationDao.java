@@ -22,7 +22,8 @@ public interface DecorationDao extends JpaRepository<Decoration, Long> {
             "FROM Decoration d " +
             "JOIN DecorationTag dt ON d.id = dt.decoration " +
             "JOIN Tag t ON t.id = dt.tag " +
-            "WHERE d.id = ?1")
+            "WHERE d.id = ?1 " +
+            "ORDER BY t.name")
     List<String> findAllTagsByDecorationId(Long id);
 
     @Query("SELECT p.amount " +

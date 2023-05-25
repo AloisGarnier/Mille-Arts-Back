@@ -1,5 +1,7 @@
 package fr.eql.ai113.mille.arts.back.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,6 +27,7 @@ public class Command {
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Address address;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Customer customer;
@@ -38,6 +41,21 @@ public class Command {
     public Set<CommandLine> getCommandLines() {
         return commandLines;
     }
+    public Long getId() {
+        return id;
+    }
+    public LocalDate getOrderDate() {
+        return orderDate;
+    }
+    public LocalDate getRealizationDate() {
+        return realizationDate;
+    }
+    public LocalDate getDeliveryDate() {
+        return deliveryDate;
+    }
+    public Address getAddress() {
+        return address;
+    }
 
     /// Setters ///
     public void setCustomer(Customer customer) {
@@ -45,5 +63,20 @@ public class Command {
     }
     public void setCommandLines(Set<CommandLine> commandLines) {
         this.commandLines = commandLines;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
+    }
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+    public void setRealizationDate(LocalDate realizationDate) {
+        this.realizationDate = realizationDate;
+    }
+    public void setDeliveryDate(LocalDate deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
 }

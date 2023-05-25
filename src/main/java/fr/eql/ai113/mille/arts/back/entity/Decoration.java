@@ -76,6 +76,9 @@ public class Decoration {
     public Set<DecorationTag> getDecorationTags() {
         return decorationTags;
     }
+    public String getDescription() {
+        return description;
+    }
 
     /// Mutateurs ///
     public void setId(Long id) {
@@ -105,4 +108,8 @@ public class Decoration {
     public void setDecorationTags(Set<DecorationTag> decorationTags) {
         this.decorationTags = decorationTags;
     }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 }

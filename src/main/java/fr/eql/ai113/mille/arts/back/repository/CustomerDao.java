@@ -25,7 +25,8 @@ public interface CustomerDao extends JpaRepository<Customer, Long> {
 
     @Query("SELECT c " +
             "FROM Command c " +
-            "WHERE c.customer = ?1")
+            "WHERE c.customer = ?1 " +
+            "ORDER BY c.orderDate desc")
     List<Command> findAllCommandsByCustomerId(Customer customer);
 
     @Transactional
