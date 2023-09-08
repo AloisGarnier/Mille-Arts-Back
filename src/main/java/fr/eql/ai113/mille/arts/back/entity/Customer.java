@@ -34,6 +34,7 @@ public class Customer implements UserDetails {
     private String password;
     private LocalDate additionDate;
     private LocalDate withdrawalDate;
+    private String description;
     @JsonIgnore
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Command> commands = new ArrayList<>();
@@ -111,7 +112,9 @@ public class Customer implements UserDetails {
     public LocalDate getWithdrawalDate() {
         return withdrawalDate;
     }
-
+    public String getDescription() {
+        return description;
+    }
 
     /// Setters ///
     public void setLastName(String lastName) {
@@ -140,6 +143,9 @@ public class Customer implements UserDetails {
     }
     public void setWithdrawalDate(LocalDate withdrawalDate) {
         this.withdrawalDate = withdrawalDate;
+    }
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

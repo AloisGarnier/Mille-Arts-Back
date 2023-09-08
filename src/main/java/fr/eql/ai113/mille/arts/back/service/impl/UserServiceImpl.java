@@ -148,7 +148,7 @@ public class UserServiceImpl implements UserService {
 
     private City checkCityAlreadyExists(String cityName, String zipCode) {
         List<City> cities = cityDao.findByNameAndZipCode(cityName, zipCode);
-        if (cities.size() == 0) {
+        if (cities.isEmpty()) {
             City city = new City();
             city.setName(cityName);
             city.setZipCode(zipCode);
@@ -171,6 +171,17 @@ public class UserServiceImpl implements UserService {
     public UserDetails getUserFromJwt(String jwt) {
         String username = getUsernameFromToken(jwt);
         return loadUserByUsername(username);
+    }
+
+    @Override
+    public String findDescription() {
+        return customerDao.findById(1L).getDescription();
+    }
+
+    @Override
+    public String modifyDescription(String newDescription) {
+        customerDao.findById(1).setDescription(newDescription);
+        return customerDao.findById(1).getDescription();
     }
 
     private String getUsernameFromToken(String token) {

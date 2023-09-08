@@ -1,7 +1,5 @@
 package fr.eql.ai113.mille.arts.back.entity.dto;
 
-import fr.eql.ai113.mille.arts.back.entity.City;
-
 public class AddressDto {
 
     private Long id;
@@ -12,7 +10,6 @@ public class AddressDto {
     private String cityName;
 
     /// Getters ///
-
     public Long getId() {
         return id;
     }

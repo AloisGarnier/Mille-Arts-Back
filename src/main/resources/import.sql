@@ -1,12 +1,13 @@
-INSERT INTO `customer` (`id`, `first_name`, `last_name`, `login`, `password`) VALUES (1, 'Alphonse', 'A', 'a@a.a', '$2a$12$3JTBArXzpWe4dMCa24mW0.was8rxVPwLxiUzfi7TIbDXDq5aQgJee');
-INSERT INTO `customer` (`id`, `first_name`, `last_name`, `login`, `password`) VALUES (2, 'Bertrand', 'B', 'b@b.b', '$2a$12$O79ml9omcHMQFhTnoxtrDu831uLzsMcU3GZTzxjlQ1rCJjMkVDZay');
+INSERT INTO `customer` (`id`, `first_name`, `last_name`, `login`, `password`, `description`) VALUES (1, 'Admin', '', 'admin', '$2a$10$MpHUhbZbl9CGoBdWzOk0dOMKw0xVZo2wdg9s2Ym7.geEyIFoQ599m', 'test');
+INSERT INTO `customer` (`id`, `first_name`, `last_name`, `login`, `password`) VALUES (2, 'Alphonse', 'A', 'a@a.a', '$2a$12$3JTBArXzpWe4dMCa24mW0.was8rxVPwLxiUzfi7TIbDXDq5aQgJee');
+INSERT INTO `customer` (`id`, `first_name`, `last_name`, `login`, `password`) VALUES (3, 'Bertrand', 'B', 'b@b.b', '$2a$12$O79ml9omcHMQFhTnoxtrDu831uLzsMcU3GZTzxjlQ1rCJjMkVDZay');
 
 INSERT INTO `city` (`id`, `name`, `zip_code`) VALUES (1, 'Paris', '75000');
 INSERT INTO `city` (`id`, `name`, `zip_code`) VALUES (2, 'Lyon', '69000');
 
-INSERT INTO `address` (`id`, `name`, `street`, `street_number`, `customer_id`, `city_id`) VALUES (1, 'Maison', 'rue des Acacias', '23', 1, 1);
-INSERT INTO `address` (`id`, `name`, `street`, `street_number`, `customer_id`, `city_id`) VALUES (2, 'Maison', 'rue des Bleuets', '3bis', 2, 1);
-INSERT INTO `address` (`id`, `name`, `street`, `street_number`, `customer_id`, `city_id`) VALUES (3, 'Chez Mamie', 'rue des Lilas', '127', 2, 2);
+INSERT INTO `address` (`id`, `name`, `street`, `street_number`, `customer_id`, `city_id`) VALUES (1, 'Maison', 'rue des Acacias', '23', 2, 1);
+INSERT INTO `address` (`id`, `name`, `street`, `street_number`, `customer_id`, `city_id`) VALUES (2, 'Maison', 'rue des Bleuets', '3bis', 3, 1);
+INSERT INTO `address` (`id`, `name`, `street`, `street_number`, `customer_id`, `city_id`) VALUES (3, 'Chez Mamie', 'rue des Lilas', '127', 3, 2);
 
 INSERT INTO `decoration` (`id`, `name`, `picture`, `description`) VALUES (1, 'Maison enneigée', 'https://i.pinimg.com/750x/d4/ce/52/d4ce5208d8b912a89ea66c0f3f34c2ba.jpg', 'Maisonnette enneigée et décorée, d''environ 20 cm de haut, se fondant parfaitement dans un décor de Noël');
 INSERT INTO `decoration` (`id`, `name`, `picture`, `description`) VALUES (2, 'Sac en tissu', 'https://i.pinimg.com/750x/a2/8b/c1/a28bc1d38f92160937ba6296f435ca36.jpg', 'Joli sac en tissu accompagné de 3 sucres d''orge décoratifs');

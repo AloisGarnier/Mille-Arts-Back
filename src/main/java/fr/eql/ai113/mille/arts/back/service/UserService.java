@@ -33,4 +33,6 @@ public interface UserService extends UserDetailsService {
     Address deleteAddress(Long addressId);
     String generateJwtForUser(UserDetails user);
     UserDetails getUserFromJwt(String jwt);
+    String findDescription();
+    String modifyDescription(String newDescription);
 }
