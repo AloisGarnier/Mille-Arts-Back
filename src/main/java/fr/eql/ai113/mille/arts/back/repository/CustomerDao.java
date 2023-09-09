@@ -61,4 +61,11 @@ public interface CustomerDao extends JpaRepository<Customer, Long> {
     @Modifying
     @Query("DELETE FROM Address a WHERE a.id = ?1")
     void deleteAddress(Long addressId);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Customer c " +
+            "SET c.description = ?1 " +
+            "WHERE c.id = 1")
+    void modifyDescription(String newDescription);
 }

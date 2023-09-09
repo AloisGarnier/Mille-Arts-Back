@@ -180,8 +180,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String modifyDescription(String newDescription) {
-        customerDao.findById(1).setDescription(newDescription);
-        return customerDao.findById(1).getDescription();
+        customerDao.modifyDescription(newDescription);
+        return findDescription();
     }
 
     private String getUsernameFromToken(String token) {
