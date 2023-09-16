@@ -27,9 +27,15 @@ public class DecorationTag {
     public Tag getTag() {
         return tag;
     }
+    public Decoration getDecoration() {
+        return decoration;
+    }
 
     // Setters //
     public void setTag(Tag tag) {
         this.tag = tag;
+    }
+    public void setDecoration(Decoration decoration) {
+        this.decoration = decoration;
     }
 }

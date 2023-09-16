@@ -23,6 +23,14 @@ public class Tag {
     @OneToMany(mappedBy = "tag", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<DecorationTag> decorationTags = new ArrayList<>();
 
+    public Tag() {
+
+    }
+
+    public Tag(String name) {
+        this.name = name;
+    }
+
     // Getters //
     public String getName() {
         return name;

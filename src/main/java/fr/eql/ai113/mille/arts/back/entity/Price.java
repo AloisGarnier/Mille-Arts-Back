@@ -23,6 +23,14 @@ public class Price {
     @OneToMany(mappedBy = "price", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<DecorationPrice> decorationPrices = new ArrayList<>();
 
+    public Price() {
+
+    }
+
+    public Price(Float amount) {
+        this.amount = amount;
+    }
+
     // Getters //
     public Float getAmount() {
         return amount;

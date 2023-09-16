@@ -1,13 +1,10 @@
 package fr.eql.ai113.mille.arts.back.controller.rest;
 
 import fr.eql.ai113.mille.arts.back.entity.Decoration;
+import fr.eql.ai113.mille.arts.back.entity.dto.DecorationDto;
 import fr.eql.ai113.mille.arts.back.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,6 +29,26 @@ public class CatalogRestController {
 
     @GetMapping("/{id}/price")
     public Float findCurrentPriceByDecoration(@PathVariable long id) { return catalogService.findCurrentPriceByDecoration(id); }
+
+    @PutMapping("/modify")
+    public Decoration modifyDecoration(@RequestBody DecorationDto decorationDto) { return catalogService.modifyDecoration(
+            decorationDto.getId(),
+            decorationDto.getName(),
+            decorationDto.getPicture(),
+            decorationDto.getDescription(),
+            decorationDto.getPreparationDelay(),
+            decorationDto.getPrice(),
+            decorationDto.getTags()
+            );
+    }
+
+    @PostMapping("/create")
+    public Decoration createNewDecoration(@RequestBody DecorationDto decorationDto) {
+        return catalogService.addDecoration();
+    }
+
+    @DeleteMapping("/{id}/delete")
+    public Decoration deleteDecoration(@PathVariable long id) { return catalogService.deleteDecoration(id);}
 
     @Autowired
     public void setCatalogService(CatalogService catalogService) {

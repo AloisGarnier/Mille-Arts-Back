@@ -31,10 +31,8 @@ public class DecorationTest {
          The decoration is created on January 1st 2023 and costs €14.5.
          The price changes on May 1st 2023 at €15.
          */
-        Price firstPrice = new Price();
-        firstPrice.setAmount(14.5F);
-        Price secondPrice = new Price();
-        secondPrice.setAmount(15F);
+        Price firstPrice = new Price(14.5F);
+        Price secondPrice = new Price(15F);
 
         DecorationPrice firstDecorationPrice = new DecorationPrice();
         firstDecorationPrice.setPrice(firstPrice);

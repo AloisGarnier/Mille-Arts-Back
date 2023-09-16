@@ -36,6 +36,9 @@ public class DecorationPrice {
     public LocalDate getAdditionDate() {
         return additionDate;
     }
+    public Decoration getDecoration() {
+        return decoration;
+    }
 
     // Setters //
     public void setPrice(Price price) {
@@ -46,5 +49,8 @@ public class DecorationPrice {
     }
     public void setAdditionDate(LocalDate additionDate) {
         this.additionDate = additionDate;
+    }
+    public void setDecoration(Decoration decoration) {
+        this.decoration = decoration;
     }
 }
