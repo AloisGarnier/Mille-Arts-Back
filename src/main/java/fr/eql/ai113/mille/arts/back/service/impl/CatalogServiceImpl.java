@@ -20,7 +20,7 @@ public class CatalogServiceImpl implements CatalogService {
 
     @Override
     public List<Decoration> findAllDecorations() {
-        return decorationDao.findAll();
+        return decorationDao.findAllActiveDecorations();
     }
 
     @Override
@@ -87,8 +87,8 @@ public class CatalogServiceImpl implements CatalogService {
     }
 
     @Override
-    public Decoration deleteDecoration(Long id) {
-        return null;
+    public void deleteDecoration(Long id) {
+        decorationDao.DisableDecorationById(id);
     }
 
     @Autowired

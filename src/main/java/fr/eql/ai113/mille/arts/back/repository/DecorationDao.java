@@ -15,12 +15,25 @@ public interface DecorationDao extends JpaRepository<Decoration, Long> {
     List<Decoration> findAll();
     Decoration findById(long id);
 
+    @Query("SELECT d " +
+            "FROM Decoration d " +
+            "WHERE d.withdrawalDate = null")
+    List<Decoration> findAllActiveDecorations();
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Decoration d " +
+            "SET d.withdrawalDate = current_time " +
+            "WHERE d.id = ?1")
+    void DisableDecorationById(long id);
+
     @Query("SELECT DISTINCT d " +
             "FROM Decoration d " +
             "JOIN DecorationTag dt ON d.id = dt.decoration " +
             "JOIN Tag t ON t.id = dt.tag " +
-            "WHERE d.name LIKE %?1% " +
-            "OR t.name LIKE %?1%")
+            "WHERE (d.name LIKE %?1% " +
+            "OR t.name LIKE %?1%) " +
+            "AND d.withdrawalDate = null")
     List<Decoration> findDecorationsByResearch(String research);
 
     @Query("SELECT t.name " +

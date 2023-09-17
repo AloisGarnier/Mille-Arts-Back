@@ -55,7 +55,7 @@ public class CatalogRestController {
     }
 
     @DeleteMapping("/{id}/delete")
-    public Decoration deleteDecoration(@PathVariable long id) { return catalogService.deleteDecoration(id);}
+    public void deleteDecoration(@PathVariable long id) { catalogService.deleteDecoration(id);}
 
     @Autowired
     public void setCatalogService(CatalogService catalogService) {
