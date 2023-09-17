@@ -44,7 +44,14 @@ public class CatalogRestController {
 
     @PostMapping("/create")
     public Decoration createNewDecoration(@RequestBody DecorationDto decorationDto) {
-        return catalogService.addDecoration();
+        return catalogService.addDecoration(
+                decorationDto.getName(),
+                decorationDto.getPicture(),
+                decorationDto.getDescription(),
+                decorationDto.getPreparationDelay(),
+                decorationDto.getPrice(),
+                decorationDto.getTags()
+        );
     }
 
     @DeleteMapping("/{id}/delete")

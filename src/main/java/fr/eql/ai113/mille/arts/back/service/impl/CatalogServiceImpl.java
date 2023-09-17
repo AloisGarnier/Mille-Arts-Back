@@ -79,8 +79,11 @@ public class CatalogServiceImpl implements CatalogService {
     }
 
     @Override
-    public Decoration addDecoration() {
-        return null;
+    public Decoration addDecoration(String name, String picture, String description, Long preparationDelay, Float price, List<String> tags) {
+        Decoration newDecoration = decorationDao.save(new Decoration());
+        Long id = newDecoration.getId();
+        newDecoration = modifyDecoration(id, name, picture, description, preparationDelay, price, tags);
+        return newDecoration;
     }
 
     @Override

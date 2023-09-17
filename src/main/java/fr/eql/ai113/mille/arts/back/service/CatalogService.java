@@ -12,6 +12,6 @@ public interface CatalogService {
     List<String> findAllTagsByIdDecoration(Long decorationId);
     Float findCurrentPriceByDecoration(Long decorationId);
     Decoration modifyDecoration(Long id, String name, String picture, String description, Long preparationDelay, Float price, List<String> tags);
-    Decoration addDecoration();
+    Decoration addDecoration(String name, String picture, String description, Long preparationDelay, Float price, List<String> tags);
     Decoration deleteDecoration(Long id);
 }
