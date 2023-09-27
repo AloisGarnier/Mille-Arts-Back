@@ -27,7 +27,6 @@ public class Command {
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Address address;
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Customer customer;
