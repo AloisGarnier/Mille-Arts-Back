@@ -22,19 +22,22 @@ public class Decoration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String picture;
+    @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Picture> pictures = new ArrayList<>();
     private String description;
+    private String weight;
+    private String dimensions;
     private Long preparationDelay;
     private LocalDate additionDate;
     private LocalDate withdrawalDate;
     @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<DecorationPrice> decorationPrices = new ArrayList<>();
+    private Set<DecorationPrice> decorationPrices = new HashSet<>();
     @JsonIgnore
     @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<CommandLine> commandLines = new HashSet<>();
     @JsonIgnore
     @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<DecorationStock> decorationStocks = new ArrayList<>();
+    private Set<DecorationStock> decorationStocks = new HashSet<>();;
     @OneToMany(mappedBy = "decoration", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<DecorationTag> decorationTags = new HashSet<>();
 
@@ -55,9 +58,6 @@ public class Decoration {
     public String getName() {
         return name;
     }
-    public String getPicture() {
-        return picture;
-    }
     public Long getPreparationDelay() {
         return preparationDelay;
     }
@@ -67,10 +67,10 @@ public class Decoration {
     public LocalDate getWithdrawalDate() {
         return withdrawalDate;
     }
-    public List<DecorationPrice> getDecorationPrices() {
+    public Set<DecorationPrice> getDecorationPrices() {
         return decorationPrices;
     }
-    public List<DecorationStock> getDecorationStocks() {
+    public Set<DecorationStock> getDecorationStocks() {
         return decorationStocks;
     }
     public Set<DecorationTag> getDecorationTags() {
@@ -79,6 +79,16 @@ public class Decoration {
     public String getDescription() {
         return description;
     }
+    public List<Picture> getPictures() {
+        return pictures;
+    }
+    public String getWeight() {
+        return weight;
+    }
+    public String getDimensions() {
+        return dimensions;
+    }
+
 
     /// Mutateurs ///
     public void setId(Long id) {
@@ -86,9 +96,6 @@ public class Decoration {
     }
     public void setName(String name) {
         this.name = name;
-    }
-    public void setPicture(String picture) {
-        this.picture = picture;
     }
     public void setPreparationDelay(Long preparationDelay) {
         this.preparationDelay = preparationDelay;
@@ -99,10 +106,10 @@ public class Decoration {
     public void setWithdrawalDate(LocalDate withdrawalDate) {
         this.withdrawalDate = withdrawalDate;
     }
-    public void setDecorationPrices(List<DecorationPrice> decorationPrices) {
+    public void setDecorationPrices(Set<DecorationPrice> decorationPrices) {
         this.decorationPrices = decorationPrices;
     }
-    public void setDecorationStocks(List<DecorationStock> decorationStocks) {
+    public void setDecorationStocks(Set<DecorationStock> decorationStocks) {
         this.decorationStocks = decorationStocks;
     }
     public void setDecorationTags(Set<DecorationTag> decorationTags) {
@@ -111,5 +118,13 @@ public class Decoration {
     public void setDescription(String description) {
         this.description = description;
     }
-
+    public void setPictures(List<Picture> pictures) {
+        this.pictures = pictures;
+    }
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+    public void setDimensions(String dimensions) {
+        this.dimensions = dimensions;
+    }
 }

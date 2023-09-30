@@ -24,6 +24,7 @@ public class Command {
     private LocalDate orderDate;
     private LocalDate realizationDate;
     private LocalDate deliveryDate;
+    private Float totalPrice;
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Address address;

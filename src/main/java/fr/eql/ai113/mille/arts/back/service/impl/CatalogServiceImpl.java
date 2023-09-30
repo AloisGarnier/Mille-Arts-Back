@@ -17,6 +17,7 @@ public class CatalogServiceImpl implements CatalogService {
     private PriceDao priceDao;
     private DecorationTagDao decorationTagDao;
     private DecorationPriceDao decorationPriceDao;
+    private PictureDao pictureDao;
 
     @Override
     public List<Decoration> findAllDecorations() {
@@ -42,10 +43,20 @@ public class CatalogServiceImpl implements CatalogService {
     }
 
     @Override
-    public Decoration modifyDecoration(Long id, String name, String picture, String description, Long preparationDelay, Float price, List<String> tagNames) {
+    public Decoration modifyDecoration(Long id, String name, List<String> pictures, String description, String weight, String dimensions, Long preparationDelay, Float price, List<String> tagNames) {
 
-        // Modifying name, picture, description and/or preparation delay
-        decorationDao.modifyDecoration(id, name, picture, description, preparationDelay);
+        // Modifying name, description and/or preparation delay
+        decorationDao.modifyDecoration(id, name, description, weight, dimensions, preparationDelay);
+
+        // Modifying pictures
+        Decoration d = findDecorationById(id);
+        pictureDao.deleteAllByDecoration(d);
+        for (String p : pictures) {
+            Picture picture = new Picture();
+            picture.setPath(p);
+            picture.setDecoration(d);
+            pictureDao.save(picture);
+        }
 
         // Modifying tags
         decorationTagDao.deleteDTByDecorationId(decorationDao.findById(id).get());
@@ -79,10 +90,11 @@ public class CatalogServiceImpl implements CatalogService {
     }
 
     @Override
-    public Decoration addDecoration(String name, String picture, String description, Long preparationDelay, Float price, List<String> tags) {
+    public Decoration addDecoration(String name, List<String> pictures, String description, String weight, String dimensions, Long preparationDelay, Float price, List<String> tags) {
         Decoration newDecoration = decorationDao.save(new Decoration());
         Long id = newDecoration.getId();
-        newDecoration = modifyDecoration(id, name, picture, description, preparationDelay, price, tags);
+        newDecoration = modifyDecoration(id, name, pictures, description, weight, dimensions, preparationDelay, price, tags);
+        decorationDao.setCurrentDate(id);
         return newDecoration;
     }
 
@@ -110,5 +122,9 @@ public class CatalogServiceImpl implements CatalogService {
     @Autowired
     public void setDecorationPriceDao(DecorationPriceDao decorationPriceDao) {
         this.decorationPriceDao = decorationPriceDao;
+    }
+    @Autowired
+    public void setPictureDao(PictureDao pictureDao) {
+        this.pictureDao = pictureDao;
     }
 }

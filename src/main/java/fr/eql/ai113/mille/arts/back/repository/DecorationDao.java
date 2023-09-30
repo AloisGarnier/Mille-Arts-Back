@@ -83,9 +83,17 @@ public interface DecorationDao extends JpaRepository<Decoration, Long> {
     @Modifying
     @Query("UPDATE Decoration d " +
             "SET d.name = ?2, " +
-            "d.picture = ?3, " +
-            "d.description = ?4, " +
-            "d.preparationDelay = ?5 " +
+            "d.description = ?3, " +
+            "d.weight = ?4, " +
+            "d.dimensions = ?5, " +
+            "d.preparationDelay = ?6 " +
             "WHERE d.id = ?1")
-    void modifyDecoration(Long id, String name, String picture, String description, Long preparationDelay);
+    void modifyDecoration(Long id, String name, String description, String weight, String dimensions, Long preparationDelay);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Decoration d " +
+            "SET d.additionDate = current_time " +
+            "WHERE d.id = ?1")
+    void setCurrentDate(Long id);
 }

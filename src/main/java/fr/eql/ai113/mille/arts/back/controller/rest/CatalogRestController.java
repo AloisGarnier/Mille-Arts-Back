@@ -34,7 +34,7 @@ public class CatalogRestController {
     public Decoration modifyDecoration(@RequestBody DecorationDto decorationDto) { return catalogService.modifyDecoration(
             decorationDto.getId(),
             decorationDto.getName(),
-            decorationDto.getPicture(),
+            decorationDto.getPictures(),
             decorationDto.getDescription(),
             decorationDto.getPreparationDelay(),
             decorationDto.getPrice(),
@@ -46,7 +46,7 @@ public class CatalogRestController {
     public Decoration createNewDecoration(@RequestBody DecorationDto decorationDto) {
         return catalogService.addDecoration(
                 decorationDto.getName(),
-                decorationDto.getPicture(),
+                decorationDto.getPictures(),
                 decorationDto.getDescription(),
                 decorationDto.getPreparationDelay(),
                 decorationDto.getPrice(),

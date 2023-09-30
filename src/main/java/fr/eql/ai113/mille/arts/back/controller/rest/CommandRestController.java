@@ -1,14 +1,11 @@
 package fr.eql.ai113.mille.arts.back.controller.rest;
 
 import fr.eql.ai113.mille.arts.back.entity.Command;
+import fr.eql.ai113.mille.arts.back.entity.dto.CommandDto;
 import fr.eql.ai113.mille.arts.back.service.CommandService;
 import fr.eql.ai113.mille.arts.back.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +22,11 @@ public class CommandRestController {
 
     @GetMapping("/todo")
     public List<Command> findTodoCommands() { return commandService.findTodoCommands(); }
+
+    @PostMapping("/newcommand")
+    public Command addNewCommand(@RequestBody CommandDto commandDto) {
+        return null;
+    }
 
     @Autowired
     public void setUserService(UserService userService) {
