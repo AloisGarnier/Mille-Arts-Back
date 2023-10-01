@@ -9,11 +9,18 @@ INSERT INTO `address` (`id`, `name`, `street`, `street_number`, `customer_id`, `
 INSERT INTO `address` (`id`, `name`, `street`, `street_number`, `customer_id`, `city_id`) VALUES (2, 'Maison', 'rue des Bleuets', '3bis', 3, 1);
 INSERT INTO `address` (`id`, `name`, `street`, `street_number`, `customer_id`, `city_id`) VALUES (3, 'Chez Mamie', 'rue des Lilas', '127', 3, 2);
 
-INSERT INTO `decoration` (`id`, `name`, `picture`, `description`) VALUES (1, 'Maison enneigée', 'https://i.pinimg.com/750x/d4/ce/52/d4ce5208d8b912a89ea66c0f3f34c2ba.jpg', 'Maisonnette enneigée et décorée, d''environ 20 cm de haut, se fondant parfaitement dans un décor de Noël');
-INSERT INTO `decoration` (`id`, `name`, `picture`, `description`) VALUES (2, 'Sac en tissu', 'https://i.pinimg.com/750x/a2/8b/c1/a28bc1d38f92160937ba6296f435ca36.jpg', 'Joli sac en tissu accompagné de 3 sucres d''orge décoratifs');
-INSERT INTO `decoration` (`id`, `name`, `picture`, `description`) VALUES (3, 'Champignon de Noël', 'https://i.pinimg.com/750x/42/72/9c/42729ce3a61105c4a75486f850206f75.jpg', 'Champignon de Noël vendu à l''unité');
-INSERT INTO `decoration` (`id`, `name`, `picture`, `description`) VALUES (4, 'Sac en tissu', 'https://i.pinimg.com/750x/74/46/d6/7446d611844ad153a50f267d06006389.jpg', 'Petit sac en tissu vendu à l''unité');
-INSERT INTO `decoration` (`id`, `name`, `picture`, `description`) VALUES (5, 'Bonhomme de neige', 'https://i.pinimg.com/750x/7c/a6/e7/7ca6e70767cde4b87ed6fc516995dab4.jpg', 'Magnifique bonhomme de neige d''environ 10 cm de haut');
+INSERT INTO `decoration` (`id`, `name`, `description`) VALUES (1, 'Maison enneigée', 'Maisonnette enneigée et décorée, d''environ 20 cm de haut, se fondant parfaitement dans un décor de Noël');
+INSERT INTO `decoration` (`id`, `name`, `description`) VALUES (2, 'Sac en tissu', 'Joli sac en tissu accompagné de 3 sucres d''orge décoratifs');
+INSERT INTO `decoration` (`id`, `name`, `description`) VALUES (3, 'Champignon de Noël', 'Champignon de Noël vendu à l''unité');
+INSERT INTO `decoration` (`id`, `name`, `description`) VALUES (4, 'Sac en tissu', 'Petit sac en tissu vendu à l''unité');
+INSERT INTO `decoration` (`id`, `name`, `description`) VALUES (5, 'Bonhomme de neige', 'Magnifique bonhomme de neige d''environ 10 cm de haut');
+
+INSERT INTO `picture` (`id`, `path`, `decoration_id`) VALUES (1, 'https://i.pinimg.com/750x/d4/ce/52/d4ce5208d8b912a89ea66c0f3f34c2ba.jpg', 1);
+INSERT INTO `picture` (`id`, `path`, `decoration_id`) VALUES (2, 'https://i.pinimg.com/750x/a2/8b/c1/a28bc1d38f92160937ba6296f435ca36.jpg', 2);
+INSERT INTO `picture` (`id`, `path`, `decoration_id`) VALUES (3, 'https://i.pinimg.com/750x/42/72/9c/42729ce3a61105c4a75486f850206f75.jpg', 3);
+INSERT INTO `picture` (`id`, `path`, `decoration_id`) VALUES (4, 'https://i.pinimg.com/750x/74/46/d6/7446d611844ad153a50f267d06006389.jpg', 4);
+INSERT INTO `picture` (`id`, `path`, `decoration_id`) VALUES (5, 'https://i.pinimg.com/750x/7c/a6/e7/7ca6e70767cde4b87ed6fc516995dab4.jpg', 5);
+
 
 INSERT INTO `tag` (`id`, `name`) VALUES (1, 'Noël');
 INSERT INTO `tag` (`id`, `name`) VALUES (2, 'Maison');

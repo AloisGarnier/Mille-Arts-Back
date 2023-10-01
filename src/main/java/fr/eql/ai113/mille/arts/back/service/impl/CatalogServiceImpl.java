@@ -30,7 +30,7 @@ public class CatalogServiceImpl implements CatalogService {
     }
 
     @Override
-    public Decoration findDecorationById(Long decorationId) {return decorationDao.findById(decorationId).get();}
+    public Decoration findDecorationById(Long decorationId) {return decorationDao.findSearchedDecorationById(decorationId);}
 
     @Override
     public List<String> findAllTagsByIdDecoration(Long decorationId) {
@@ -40,6 +40,11 @@ public class CatalogServiceImpl implements CatalogService {
     @Override
     public Float findCurrentPriceByDecoration(Long decorationId) {
         return decorationDao.findCurrentPriceByDecorationId(decorationId);
+    }
+
+    @Override
+    public List<String> findPicturesByDecoration(Long decorationId) {
+        return decorationDao.findPicturesByDecoration(decorationId);
     }
 
     @Override

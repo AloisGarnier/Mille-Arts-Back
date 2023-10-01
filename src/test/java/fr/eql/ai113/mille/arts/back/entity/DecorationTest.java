@@ -9,7 +9,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class DecorationTest {
 
@@ -43,7 +45,7 @@ public class DecorationTest {
         secondDecorationPrice.setPrice(secondPrice);
         secondDecorationPrice.setAdditionDate(LocalDate.of(2023, 5, 1));
 
-        List<DecorationPrice> decorationPrices = new ArrayList<>();
+        Set<DecorationPrice> decorationPrices = new HashSet<>();
         decorationPrices.add(firstDecorationPrice);
         decorationPrices.add(secondDecorationPrice);
         decoration.setDecorationPrices(decorationPrices);

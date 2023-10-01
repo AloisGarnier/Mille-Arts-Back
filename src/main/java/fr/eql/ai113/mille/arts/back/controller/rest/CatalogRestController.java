@@ -30,12 +30,17 @@ public class CatalogRestController {
     @GetMapping("/{id}/price")
     public Float findCurrentPriceByDecoration(@PathVariable long id) { return catalogService.findCurrentPriceByDecoration(id); }
 
+    @GetMapping("/{id}/pictures")
+    public List<String> findPicturesByDecoration(@PathVariable long id) { return catalogService.findPicturesByDecoration(id); }
+
     @PutMapping("/modify")
     public Decoration modifyDecoration(@RequestBody DecorationDto decorationDto) { return catalogService.modifyDecoration(
             decorationDto.getId(),
             decorationDto.getName(),
             decorationDto.getPictures(),
             decorationDto.getDescription(),
+            decorationDto.getWeight(),
+            decorationDto.getDimensions(),
             decorationDto.getPreparationDelay(),
             decorationDto.getPrice(),
             decorationDto.getTags()
@@ -48,6 +53,8 @@ public class CatalogRestController {
                 decorationDto.getName(),
                 decorationDto.getPictures(),
                 decorationDto.getDescription(),
+                decorationDto.getWeight(),
+                decorationDto.getDimensions(),
                 decorationDto.getPreparationDelay(),
                 decorationDto.getPrice(),
                 decorationDto.getTags()

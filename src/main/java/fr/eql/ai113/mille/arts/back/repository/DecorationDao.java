@@ -13,7 +13,11 @@ import java.util.List;
 public interface DecorationDao extends JpaRepository<Decoration, Long> {
 
     List<Decoration> findAll();
-    Decoration findById(long id);
+
+    @Query("SELECT d " +
+            "FROM Decoration d " +
+            "WHERE d.id = ?1")
+    Decoration findSearchedDecorationById(long id);
 
     @Query("SELECT d " +
             "FROM Decoration d " +
@@ -51,6 +55,12 @@ public interface DecorationDao extends JpaRepository<Decoration, Long> {
             "WHERE d.id = ?1 " +
             "AND dp.withdrawalDate = null ")
     Float findCurrentPriceByDecorationId(Long decorationId);
+
+    @Query("SELECT p.path " +
+            "FROM Picture p " +
+            "JOIN Decoration d ON d.id = p.decoration " +
+            "WHERE d.id = ?1 ")
+    List<String> findPicturesByDecoration(Long decorationId);
 
     @Query("SELECT p " +
             "FROM Decoration d " +
