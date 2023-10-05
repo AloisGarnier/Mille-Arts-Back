@@ -12,31 +12,8 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.database-platform=org.hibernate.dialect.MySQL5InnoDBDialect
 spring.datasource.username=root
 spring.datasource.password=AI113
-spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.hibernate.ddl-auto=create
 spring.jpa.properties.hibernate.show_sql=true
-
-# Désactive l'extension de la session jpa dans les couches supérieures
-spring.jpa.open-in-view=false
-
-# Security
-server.error.include-message=always
-jwt.signing.key=fba828e9-bde9-4335-b192-c8aecccdc83a
-
-*** Deployment ***
-
-# Embedded Tomcat configuration
-server.port=8081
-
-# Cross-origin
-front.url=https://main.d351bhoi48t9mj.amplifyapp.com
-
-cloud.aws.credentials.profile-name=pratikpoc
-cloud.aws.region.auto=true
-
-cloud.aws.rds.instances[0].db-instance-identifier=testinstance
-cloud.aws.rds.instances[0].username=pocadmin
-cloud.aws.rds.instances[0].password=pocadmin
-cloud.aws.rds.instances[0].databaseName=mysql
 
 # Désactive l'extension de la session jpa dans les couches supérieures
 spring.jpa.open-in-view=false

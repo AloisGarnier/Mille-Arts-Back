@@ -6,6 +6,7 @@ import fr.eql.ai113.mille.arts.back.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,11 @@ public class CatalogServiceImpl implements CatalogService {
 
     @Override
     public Decoration findDecorationById(Long decorationId) {return decorationDao.findSearchedDecorationById(decorationId);}
+
+    @Override
+    public List<Decoration> findNovelties() {
+        return decorationDao.findAndSortDecorationsByAdditionDate().subList(0,5);
+    }
 
     @Override
     public List<String> findAllTagsByIdDecoration(Long decorationId) {
@@ -79,7 +85,7 @@ public class CatalogServiceImpl implements CatalogService {
         }
 
         // Modifying current price
-        decorationDao.deleteCurrentPriceByDecorationId(decorationDao.findById(id).get(), decorationDao.findCurrentPriceClassByDecorationId(id));
+        decorationDao.deleteCurrentPriceByDecorationId(decorationDao.findById(id).get(), decorationDao.findCurrentPriceClassByDecorationId(id), LocalDate.now());
         Price priceClass = decorationDao.findPriceByAmount(price);
         if (priceClass == null) {
             priceClass = new Price(price);
@@ -99,13 +105,13 @@ public class CatalogServiceImpl implements CatalogService {
         Decoration newDecoration = decorationDao.save(new Decoration());
         Long id = newDecoration.getId();
         newDecoration = modifyDecoration(id, name, pictures, description, weight, dimensions, preparationDelay, price, tags);
-        decorationDao.setCurrentDate(id);
+        decorationDao.setCurrentDate(id, LocalDate.now());
         return newDecoration;
     }
 
     @Override
     public void deleteDecoration(Long id) {
-        decorationDao.DisableDecorationById(id);
+        decorationDao.DisableDecorationById(id, LocalDate.now());
     }
 
     @Autowired

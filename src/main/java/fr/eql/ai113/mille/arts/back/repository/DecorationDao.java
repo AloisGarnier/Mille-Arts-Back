@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface DecorationDao extends JpaRepository<Decoration, Long> {
@@ -24,12 +25,18 @@ public interface DecorationDao extends JpaRepository<Decoration, Long> {
             "WHERE d.withdrawalDate = null")
     List<Decoration> findAllActiveDecorations();
 
+    @Query("SELECT d " +
+            "FROM Decoration d " +
+            "WHERE d.withdrawalDate = null " +
+            "ORDER BY d.additionDate desc ")
+    List<Decoration> findAndSortDecorationsByAdditionDate();
+
     @Transactional
     @Modifying
     @Query("UPDATE Decoration d " +
-            "SET d.withdrawalDate = current_time " +
+            "SET d.withdrawalDate = ?2 " +
             "WHERE d.id = ?1")
-    void DisableDecorationById(long id);
+    void DisableDecorationById(long id, LocalDate currentDate);
 
     @Query("SELECT DISTINCT d " +
             "FROM Decoration d " +
@@ -73,11 +80,11 @@ public interface DecorationDao extends JpaRepository<Decoration, Long> {
     @Transactional
     @Modifying
     @Query("UPDATE DecorationPrice dp " +
-            "SET dp.withdrawalDate = CURRENT_TIME " +
+            "SET dp.withdrawalDate = ?3 " +
             "WHERE dp.decoration = ?1 " +
             "AND dp.price = ?2 " +
             "AND dp.withdrawalDate = null")
-    void deleteCurrentPriceByDecorationId(Decoration decoration, Price price);
+    void deleteCurrentPriceByDecorationId(Decoration decoration, Price price, LocalDate currentDate);
 
     @Query("SELECT t " +
             "FROM Tag t " +
@@ -103,7 +110,7 @@ public interface DecorationDao extends JpaRepository<Decoration, Long> {
     @Transactional
     @Modifying
     @Query("UPDATE Decoration d " +
-            "SET d.additionDate = current_time " +
+            "SET d.additionDate = ?2 " +
             "WHERE d.id = ?1")
-    void setCurrentDate(Long id);
+    void setCurrentDate(Long id, LocalDate currentDate);
 }

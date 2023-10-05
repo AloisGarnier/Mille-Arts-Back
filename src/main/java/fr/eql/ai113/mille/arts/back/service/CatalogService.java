@@ -9,6 +9,7 @@ public interface CatalogService {
     List<Decoration> findAllDecorations();
     List<Decoration> findDecorationsByResearch(String research);
     Decoration findDecorationById(Long decorationId);
+    List<Decoration> findNovelties();
     List<String> findAllTagsByIdDecoration(Long decorationId);
     Float findCurrentPriceByDecoration(Long decorationId);
     List<String> findPicturesByDecoration(Long decorationId);
